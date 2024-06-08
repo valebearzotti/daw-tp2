@@ -105,6 +105,11 @@ main {
   border-radius: 8px;
 }
 
+.card a {
+  text-decoration: none;
+  color: #333;
+}
+
 .card h5 {
   font-style: italic;
   color: #626262;
