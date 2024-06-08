@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Noticias de Tecnología</title>
+    <link rel="stylesheet" href="./styles/normalize.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>TechNews</h1>
+        <p>#1 fuente de informacion tecnológica de la región</p>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="topnav" id="myTopnav">
+        <a href="#">Home</a>
+        <a href="#">Noticias</a>
+        <a href="#">Opiniones</a>
+        <a href="#">Contacto</a>
+    </div>
+
+    <main>
+        <div class="row">
+            <div class="leftcolumn">
+                <div class="card">
+                    <h2>Tesla Model S Plaid: Elon Musk presento el auto mas rapido del mundo</h2>
+                    <h5>Actualizado: 8 de junio de 2024</h5>
+                    <img src="./img/tesla-model-s.jpeg" alt="Tesla Model S" style="width:100%">
+                    <p>Elon Musk ha presentado la última versión del Tesla Model S, que incluye mejoras significativas
+                        en la
+                        autonomía y el rendimiento.</p>
+                    <p>El nuevo modelo promete una autonomía de hasta 650 kilómetros y una aceleración de 0 a 100 km/h
+                        en
+                        menos de 2 segundos, convirtiéndolo en uno de los coches eléctricos más rápidos del mercado.</p>
+                </div>
+                <div class="card">
+                    <h2>Google I/O 2024: Las principales novedades</h2>
+                    <h5>Actualizado: 7 de junio de 2024</h5>
+                    <img src="./img/og-image.jpeg" alt="Google I/O 2024" style="width:100%">
+                    <p>Google ha presentado una serie de nuevas características y productos en su conferencia anual
+                        Google
+                        I/O.</p>
+                    <p>Entre las novedades destacan la nueva versión de Android 14, mejoras en Google Assistant y el
+                        lanzamiento de un nuevo dispositivo de realidad aumentada.</p>
+                </div>
+            </div>
+            <div class="rightcolumn">
+                <div class="card">
+                    <h2>Sobre Nosotros</h2>
+                    <img src="./img/team.jpg" alt="Sobre Nosotros" style="width:100%">
+                    <p>Somos un equipo de entusiastas de la tecnología comprometidos a brindarte las últimas noticias y
+                        análisis del mundo tecnológico.</p>
+                </div>
+                <div class="card">
+                    <h3>Trending</h3>
+                    <div class="posts">
+                        <div class="post">
+                            <img src="./img/iphone-15.webp" alt="iPhone 15" style="width:100%">
+                            <h4>Analisis del iPhone 15</h4>
+                        </div>
+                        <div class="post">
+                            <img src="./img/legion.jpeg" alt="Lenovo Legion" style="width:100%">
+                            <h4>Las mejores laptops por menos de 500 USD</h4>
+                        </div>
+                        <div class="post">
+                            <img src="./img/rabbit-r1.jpeg" alt="Rabbit R1" style="width:100%">
+                            <h4>Todo sobre el nuevo Rabbit R1</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="footer">
+        <h2>TechNews</h2>
+        <div class="social">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+        <p>© 2024 TechNews. Todos los derechos reservados.</p>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var x = document.getElementById("myTopnav");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
