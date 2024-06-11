@@ -75,6 +75,9 @@ img {
 
 main {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Create two columns that stack on top of each other by default */
@@ -87,13 +90,6 @@ main {
 
 .rightcolumn {
   padding-left: 20px;
-}
-
-/* Fake image */
-.fakeimg {
-  background-color: #aaa;
-  width: 100%;
-  padding: 20px;
 }
 
 /* Add a card effect for articles */
@@ -177,6 +173,38 @@ main {
   color: #aeaeae;
   text-decoration: underline;
   font-size: 20px;
+}
+
+/* Subscription form */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  background-color: white;
+  padding: 32px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 0 auto;
+  gap: 24px;
+}
+
+.form_content {
+  display: flex;
+  width: 100%;
+  gap: 24px;
+}
+
+.input {
+  gap: 8px;
+  padding: 8px;
+}
+
+/* Flex - Column utility class */
+.column {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Responsive layout - when the screen is more than 400px wide, make the navigation links float left */
