@@ -33,44 +33,54 @@
                     <div class="input column">
                         <label for="nombre">Nombre Completo:</label>
                         <input type="text" id="nombre" name="nombre" required>
+                        <span class="error" id="error-nombre"></span>
                     </div>
                     <div class="input column">
                         <label for="dni">DNI:</label>
                         <input type="text" id="dni" name="dni" required pattern="\d{7,8}">
+                        <span class="error" id="error-dni"></span>
                     </div>
                     <div class="input column">
                         <label for="email">Email:</label>
                         <input type="email" id="email" name="email" required>
+                        <span class="error" id="error-email"></span>
                     </div>
                     <div class="input column">
                         <label for="password">Contraseña:</label>
                         <input type="password" id="password" name="password" required>
+                        <span class="error" id="error-password"></span>
                     </div>
                     <div class="input column">
                         <label for="password">Repetir contraseña:</label>
                         <input type="password" id="repetir-password" name="repetir-password" required>
+                        <span class="error" id="error-repetir-password"></span>
                     </div>
                 </div>
                 <div class="column">
                     <div class="input column">
                         <label for="edad">Edad:</label>
                         <input type="number" id="edad" name="edad" min="18" required>
+                        <span class="error" id="error-edad"></span>
                     </div>
                     <div class="input column">
                         <label for="telefono">Teléfono:</label>
                         <input type="tel" id="telefono" name="telefono" required pattern="[0-9]{7,}">
+                        <span class="error" id="error-telefono"></span>
                     </div>
                     <div class="input column">
                         <label for="direccion">Dirección:</label>
                         <input type="text" id="direccion" name="direccion" required>
+                        <span class="error" id="error-direccion"></span>
                     </div>
                     <div class="input column">
                         <label for="ciudad">Ciudad:</label>
                         <input type="text" id="ciudad" name="ciudad" required>
+                        <span class="error" id="error-ciudad"></span>
                     </div>
                     <div class="input column">
                         <label for="codigo-postal">Código Postal:</label>
                         <input type="text" id="codigo-postal" name="codigo-postal" required>
+                        <span class="error" id="error-codigo-postal">
                     </div>
                 </div>
             </div>
@@ -87,6 +97,136 @@
         </div>
         <p>© 2024 TechNews. Todos los derechos reservados.</p>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const fields = [
+                {
+                    id: "nombre",
+                    validator: validateNombre,
+                    errorMessage:
+                        "El nombre debe tener más de 6 letras y al menos un espacio.",
+                },
+                {
+                    id: "email",
+                    validator: validateEmail,
+                    errorMessage: "El email no tiene un formato válido.",
+                },
+                {
+                    id: "password",
+                    validator: validatePassword,
+                    errorMessage:
+                        "La contraseña debe tener al menos 8 caracteres y contener letras y números.",
+                },
+                {
+                    id: "repetir-password",
+                    validator: validateRepetirPassword,
+                    errorMessage:
+                        "Las contraseñas no coinciden o no cumplen con los requisitos.",
+                },
+                {
+                    id: "edad",
+                    validator: validateEdad,
+                    errorMessage: "La edad debe ser un número entero mayor o igual a 18.",
+                },
+                {
+                    id: "telefono",
+                    validator: validateTelefono,
+                    errorMessage:
+                        "El teléfono debe tener al menos 7 dígitos y no debe contener espacios, guiones ni paréntesis.",
+                },
+                {
+                    id: "direccion",
+                    validator: validateDireccion,
+                    errorMessage:
+                        "La dirección debe tener al menos 5 caracteres, con letras, números y un espacio en el medio.",
+                },
+                {
+                    id: "ciudad",
+                    validator: validateCiudad,
+                    errorMessage: "La ciudad debe tener al menos 3 caracteres.",
+                },
+                {
+                    id: "codigo-postal",
+                    validator: validateCodigoPostal,
+                    errorMessage: "El código postal debe tener al menos 3 caracteres.",
+                },
+                {
+                    id: "dni",
+                    validator: validateDNI,
+                    errorMessage: "El DNI debe tener 7 u 8 dígitos.",
+                },
+            ];
+
+            fields.forEach((field) => {
+                const input = document.getElementById(field.id);
+                input.addEventListener("blur", function () {
+                    const errorElement = document.getElementById("error-" + field.id);
+                    if (!field.validator(input.value)) {
+                        errorElement.textContent = field.errorMessage;
+                    } else {
+                        errorElement.textContent = "";
+                    }
+                });
+
+                input.addEventListener("focus", function () {
+                    const errorElement = document.getElementById("error-" + field.id);
+                    errorElement.textContent = "";
+                });
+            });
+
+            function validateNombre(nombre) {
+                return nombre.length > 6 && nombre.includes(" ");
+            }
+
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+
+            function validatePassword(password) {
+                const re = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
+                return re.test(password);
+            }
+
+            function validateRepetirPassword(repetirPassword) {
+                const re = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
+                return re.test(repetirPassword) && repetirPassword === password;
+            }
+
+            function validateEdad(edad) {
+                return Number.isInteger(Number(edad)) && Number(edad) >= 18;
+            }
+
+            function validateTelefono(telefono) {
+                const re = /^[0-9]{7,}$/;
+                return re.test(telefono);
+            }
+
+            function validateDireccion(direccion) {
+                return (
+                    direccion.length >= 5 &&
+                    /\d/.test(direccion) &&
+                    /[a-zA-Z]/.test(direccion) &&
+                    direccion.includes(" ")
+                );
+            }
+
+            function validateCiudad(ciudad) {
+                return ciudad.length >= 3;
+            }
+
+            function validateCodigoPostal(codigoPostal) {
+                return codigoPostal.length >= 3;
+            }
+
+            function validateDNI(dni) {
+                const re = /^\d{7,8}$/;
+                return re.test(dni);
+            }
+        });
+
+    </script>
 </body>
 
 </html>
